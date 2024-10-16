@@ -1,0 +1,45 @@
+.container {
+  max-width: 1536px;
+  margin: auto;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 25vh;
+  background-color: #0265a1;
+  overflow: hidden;
+  margin: 60px 0 0;
+  padding: 16px 24px;
+  h1,
+  p {
+    color: white;
+  }
+}
+
+.bannerOverlay {
+  z-index: 1;
+  background: #032e48bf;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.contentWrapper h2 {
+  padding: 8px;
+}
+
+.postCardWrapper {
+  display: inline-block;
+  padding: 8px;
+  width: 25%;
+  min-width: 200px;
+}
+
+.contentWrapper > p {
+  text-align: justify;
+}

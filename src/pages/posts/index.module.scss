@@ -1,0 +1,37 @@
+.container {
+  max-width: 1536px;
+  margin: auto;
+}
+
+.banner {
+  background-color: #0265a1;
+  margin: 60px 0 0;
+  padding: 16px 24px;
+
+  h1,
+  p {
+    color: white;
+  }
+}
+
+.postsWrapper h2 {
+  padding: 8px;
+}
+
+.postCardWrapper {
+  display: inline-block;
+  padding: 8px;
+  width: 25%;
+  min-width: 200px;
+}
+
+.search {
+  width: 80%;
+  margin: 32px auto 24px;
+  display: block;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 4px;
+}
