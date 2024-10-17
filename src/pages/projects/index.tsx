@@ -9,7 +9,7 @@ const GithubProjectsPage = () => {
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
           <h1>My Github Projects</h1>
-          <p>Checkout my Github projects that i've worked on !</p>
+          <p>{`Checkout my Github projects that i've worked on !`}</p>
           <Link
             href="https://github.com/muhamadisro27"
             target="_blank"
