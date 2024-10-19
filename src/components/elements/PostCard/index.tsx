@@ -19,7 +19,7 @@ const PostCard = (props: Props) => {
           <Image src={thumbnail} alt="" fill objectFit="cover" quality={80} />
         </div>
         <h3>{title}</h3>
-        <p>{summary}</p>
+        <p className={styles.summary}>{summary}</p>
       </Link>
     </section>
   );
