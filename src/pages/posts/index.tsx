@@ -22,6 +22,8 @@ const PostPage = () => {
           .map((_, index) => (
             <div key={index} className={styles.postCardWrapper}>
               <PostCard
+                slug="my-first-blog-post"
+                content="asdfasdf"
                 url="posts/123"
                 title="My first blog post"
                 summary="checkout my first blog post"
