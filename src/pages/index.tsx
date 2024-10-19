@@ -1,6 +1,6 @@
 import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
-import fetchTable from "@/hooks/useFetch";
+import fetchAll from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
 import { Post } from "@/types/post";
 
@@ -35,7 +35,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data: posts, error } = await fetchTable("posts", 4);
+    const { data: posts, error } = await fetchAll("posts", 4);
     if (error) {
       throw new Error(error.message);
     }
