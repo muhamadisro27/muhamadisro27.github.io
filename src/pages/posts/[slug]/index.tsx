@@ -33,6 +33,7 @@ const DetailPostPage = ({ post }: { post: Post }) => {
 
 export default DetailPostPage;
 
+// @typescript-eslint/no-explicit-any
 export const getStaticProps = async (ctx: any) => {
   try {
     const slug = ctx.params.slug;

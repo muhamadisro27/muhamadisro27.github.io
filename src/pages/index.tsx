@@ -15,7 +15,7 @@ export default function Home({ posts }: { posts: Post[] }) {
         <h2>Newest Posts</h2>
 
         {posts.length > 0 ? (
-          posts.map((post: Post, _) => (
+          posts.map((post: Post) => (
             <div key={post.slug} className={styles.postCardWrapper}>
               <PostCard
                 slug={post.slug}
