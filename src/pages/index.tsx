@@ -1,7 +1,10 @@
 import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
+import { fetchAll } from "@/hooks/useFetch";
+import { GetStaticProps } from "next";
+import { Post } from "@/types/post";
 
-export default function Home() {
+export default function Home({ posts }: { posts: Post[] }) {
   return (
     <main className={styles.container}>
       <div className={styles.banner}>
@@ -10,19 +13,45 @@ export default function Home() {
       </div>
       <div className={styles.postsWrapper}>
         <h2>Newest Posts</h2>
-        {Array(4)
-          .fill(null)
-          .map((_, index) => (
-            <div key={index} className={styles.postCardWrapper}>
+
+        {posts.length > 0 ? (
+          posts.map((post: Post, _) => (
+            <div key={post.slug} className={styles.postCardWrapper}>
               <PostCard
-                url="posts/123"
-                title="My first blog post"
-                summary="checkout my first blog post"
-                thumbnail="/default.jpg"
+                slug={post.slug}
+                url={`/posts/${post.slug}`}
+                title={post.title}
+                summary={post.summary}
+                thumbnail={post.thumbnail}
+                content={post.content}
               />
             </div>
-          ))}
+          ))
+        ) : (
+          <p>No posts available at the moment.</p>
+        )}
       </div>
     </main>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const { data: posts, error } = await fetchAll("posts", 4);
+    if (error) {
+      throw new Error(error.message);
+    }
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
+};

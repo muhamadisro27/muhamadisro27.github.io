@@ -1,16 +1,10 @@
 import Image from "next/image";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import { PostURL } from "@/types/post";
 
-interface Props {
-  title: string;
-  summary: string;
-  thumbnail: string;
-  url: string;
-}
-
-const PostCard = (props: Props) => {
-  const { title, thumbnail, summary, url } = props;
+const PostCard = (props: PostURL) => {
+  const { title, thumbnail, summary, url = "" } = props;
 
   return (
     <section className={styles.container}>
@@ -19,7 +13,7 @@ const PostCard = (props: Props) => {
           <Image src={thumbnail} alt="" fill objectFit="cover" quality={80} />
         </div>
         <h3>{title}</h3>
-        <p>{summary}</p>
+        <p className={styles.summary}>{summary}</p>
       </Link>
     </section>
   );
