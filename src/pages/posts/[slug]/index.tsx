@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./index.module.scss";
 import { fetchAll, fetchBySlug } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
+import { GetStaticProps } from "next";
 
 const DetailPostPage = ({ post }: { post: Post }) => {
   if (!post) {
@@ -33,12 +34,15 @@ const DetailPostPage = ({ post }: { post: Post }) => {
 
 export default DetailPostPage;
 
-// @typescript-eslint/no-explicit-any
-export const getStaticProps = async (ctx: any) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const slug = ctx.params.slug;
+    const slug = ctx.params?.slug;
 
-    const { data: post, error } = await fetchBySlug("posts", slug);
+    if (!slug) {
+      throw new Error("Slug is undefined");
+    }
+
+    const { data: post, error } = await fetchBySlug("posts", slug as string);
 
     if (error) {
       throw new Error(error.message);
@@ -70,7 +74,7 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths,
+    paths: paths || [],
     fallback: false,
   };
 };
