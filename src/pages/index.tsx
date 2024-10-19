@@ -1,6 +1,6 @@
 import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
-import fetchAll from "@/hooks/useFetch";
+import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
 import { Post } from "@/types/post";
 
@@ -16,12 +16,14 @@ export default function Home({ posts }: { posts: Post[] }) {
 
         {posts.length > 0 ? (
           posts.map((post: Post, _) => (
-            <div key={post.uuid} className={styles.postCardWrapper}>
+            <div key={post.slug} className={styles.postCardWrapper}>
               <PostCard
+                slug={post.slug}
                 url={`/posts/${post.slug}`}
                 title={post.title}
                 summary={post.summary}
                 thumbnail={post.thumbnail}
+                content={post.content}
               />
             </div>
           ))

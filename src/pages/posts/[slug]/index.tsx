@@ -1,42 +1,75 @@
 import Image from "next/image";
 import styles from "./index.module.scss";
+import { fetchAll, fetchBySlug } from "@/hooks/useFetch";
+import { Post } from "@/types/post";
 
-const DetailPostPage = () => {
+const DetailPostPage = ({ post }: { post: Post }) => {
+  if (!post) {
+    return <p>Loading ...</p>;
+  }
+
   return (
     <main className={styles.container}>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
-          <h1>Hi there! welcome to my personal web</h1>
-          <p>This is a place to share my personal thoughts</p>
+          <h1>{post.title}</h1>
+          <p>{post.summary}</p>
         </div>
-        <Image alt="" src="/default.jpg" fill objectFit="cover" />
+        {post.thumbnail && (
+          <Image
+            alt={`Thumbnail of ${post.title}`}
+            src={`/${post.thumbnail}`}
+            fill
+            objectFit="cover"
+          />
+        )}
       </div>
       <div className={styles.contentWrapper}>
-        <p>
-          {` Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.`}
-        </p>
-        <p>
-          {`Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.`}
-        </p>
+        {<div dangerouslySetInnerHTML={{ __html: post.content }} />}
       </div>
     </main>
   );
 };
 
 export default DetailPostPage;
+
+export const getStaticProps = async (ctx: any) => {
+  try {
+    const slug = ctx.params.slug;
+
+    const { data: post, error } = await fetchBySlug("posts", slug);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return {
+      props: {
+        post,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      props: {
+        post: {},
+      },
+    };
+  }
+};
+
+export const getStaticPaths = async () => {
+  const { data: posts } = await fetchAll("posts");
+
+  const paths = posts?.map((post: Post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
