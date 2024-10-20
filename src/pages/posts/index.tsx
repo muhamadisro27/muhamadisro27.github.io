@@ -27,7 +27,7 @@ const PostPage = () => {
                 url="posts/123"
                 title="My first blog post"
                 summary="checkout my first blog post"
-                thumbnail="/default.jpg"
+                thumbnail="default.jpg"
               />
             </div>
           ))}

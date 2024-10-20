@@ -10,7 +10,7 @@ const PostCard = (props: PostURL) => {
     <section className={styles.container}>
       <Link href={url}>
         <div className={styles.imageWrapper}>
-          <Image src={thumbnail} alt="" fill objectFit="cover" quality={80} />
+          <Image src={`/${thumbnail}`} alt="" fill objectFit="cover" quality={80} />
         </div>
         <h3>{title}</h3>
         <p className={styles.summary}>{summary}</p>

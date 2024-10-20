@@ -45,3 +45,17 @@ const GithubProjectsPage = () => {
 };
 
 export default GithubProjectsPage;
+
+
+export const getServerSideProps = async () => {
+
+  const url = process.env.NEXT_PUBLIC_GH_ENDPOINT
+
+  console.log(url)
+
+  return {
+    props:{
+
+    }
+  }
+}
