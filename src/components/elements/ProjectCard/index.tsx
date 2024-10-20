@@ -1,21 +1,15 @@
+import { Repo } from "@/types/repo";
 import styles from "./index.module.scss";
 import Link from "next/link";
 
-interface Props {
-  title: string;
-  summary: string;
-  date: string;
-  url: string;
-}
-
-const ProjectCard = (props: Props) => {
-  const { title, summary, date, url } = props;
+const ProjectCard = (props: Repo) => {
+  const { name, updatedAt, summary, url } = props;
 
   return (
     <section className={styles.container}>
-      <Link href={url}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.lastUpdated}>last updated: {date}</p>
+      <Link href={url} target="_blank">
+        <h3 className={styles.title}>{name}</h3>
+        <p className={styles.lastUpdated}>last updated: {updatedAt}</p>
         <p className={styles.summary}>{summary}</p>
       </Link>
     </section>

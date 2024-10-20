@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { fetchAll, fetchBySlug } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
 import { GetStaticProps } from "next";
+import useImage from "@/hooks/useImage";
 
 const DetailPostPage = ({ post }: { post: Post }) => {
   if (!post) {
@@ -19,7 +20,7 @@ const DetailPostPage = ({ post }: { post: Post }) => {
         {post.thumbnail && (
           <Image
             alt={`Thumbnail of ${post.title}`}
-            src={`/${post.thumbnail}`}
+            src={useImage(post.thumbnail)}
             fill
             objectFit="cover"
           />

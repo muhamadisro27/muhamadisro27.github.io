@@ -2,8 +2,12 @@ import Image from "next/image";
 import ProjectCard from "@/components/elements/ProjectCard";
 import Link from "next/link";
 import styles from "./index.module.scss";
+import { RepoProps } from "@/types/repo";
+import moment from "moment";
 
-const GithubProjectsPage = () => {
+const GithubProjectsPage = (props: RepoProps) => {
+  const { repos } = props;
+
   return (
     <main className={styles.container}>
       <div className={styles.banner}>
@@ -27,15 +31,14 @@ const GithubProjectsPage = () => {
         />
       </div>
       <div className={styles.contentWrapper}>
-        {Array(10)
-          .fill(null)
-          .map((_, index) => (
-            <div key={index} className={styles.projectCardWrapper}>
+        {repos.length > 0 &&
+          repos.map(({ id, html_url, full_name, updated_at, description }) => (
+            <div key={id} className={styles.projectCardWrapper}>
               <ProjectCard
-                url="https://github.com/muhamadisro27"
-                title="First Repo"
-                date="12 Nov 2023"
-                summary="Lorem ipsum dolor sit amet, consectetur"
+                url={html_url}
+                name={full_name}
+                updatedAt={moment(updated_at).format("DD-MM-YYYY")}
+                summary={description}
               />
             </div>
           ))}
@@ -46,16 +49,17 @@ const GithubProjectsPage = () => {
 
 export default GithubProjectsPage;
 
+export const getStaticProps = async () => {
+  const res = await fetch(
+    `${process.env.BASE_GH_ENDPOINT}/users/muhamadisro27/repos?type=public&sort=created&direction=desc`
+  );
 
-export const getServerSideProps = async () => {
-
-  const url = process.env.NEXT_PUBLIC_GH_ENDPOINT
-
-  console.log(url)
+  const data = await res.json();
 
   return {
-    props:{
-
-    }
-  }
-}
+    props: {
+      repos: data || [],
+    },
+    revalidate: 60,
+  };
+};
