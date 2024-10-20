@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 25vh;
+  height: 30vh;
   background-color: #0265a1;
   overflow: hidden;
   margin: 60px 0 0;
@@ -29,10 +29,6 @@
   width: 100%;
 }
 
-.contentWrapper h2 {
-  padding: 8px;
-}
-
 .postCardWrapper {
   display: inline-block;
   padding: 8px;
@@ -40,6 +36,29 @@
   min-width: 200px;
 }
 
-.contentWrapper > p {
+.contentWrapper {
+  padding: 0 15px;
+
+  h2 {
+    padding: 8px;
+  }
+}
+
+.contentWrapper:has(p) {
   text-align: justify;
+}
+
+@media screen and (min-width: 768px) {
+  .contentWrapper {
+    padding: 0 20px;
+  }
+  .banner {
+    height: 25vh;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .contentWrapper {
+    padding: 0;
+  }
 }

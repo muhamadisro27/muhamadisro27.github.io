@@ -22,7 +22,6 @@ const DetailPostPage = ({ post }: { post: Post }) => {
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
           <h1>{post.title}</h1>
-          <p>{post.summary}</p>
         </div>
         {post.thumbnail && (
           <Image
