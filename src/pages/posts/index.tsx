@@ -1,4 +1,5 @@
 import PostCard from "@/components/elements/PostCard";
+import NotFoundError from "@/components/elements/NotFound";
 import styles from "./index.module.scss";
 import { GetStaticProps } from "next";
 import { fetchAll } from "@/hooks/useFetch";
@@ -50,7 +51,7 @@ const PostPage = ({ posts }: { posts: Post[] }) => {
             </div>
           ))
         ) : (
-          <div className={styles.notFound}>no data</div>
+          <NotFoundError keyword={search} />
         )}
       </div>
     </main>
