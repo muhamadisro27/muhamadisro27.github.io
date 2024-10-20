@@ -4,11 +4,16 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import { RepoProps } from "@/types/repo";
 import moment from "moment";
+import Head from "next/head";
 
 const GithubProjectsPage = (props: RepoProps) => {
   const { repos } = props;
 
   return (
+    <>
+    <Head>
+      <title>Projects Page</title>
+    </Head>
     <main className={styles.container}>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
@@ -44,6 +49,7 @@ const GithubProjectsPage = (props: RepoProps) => {
           ))}
       </div>
     </main>
+    </>
   );
 };
 

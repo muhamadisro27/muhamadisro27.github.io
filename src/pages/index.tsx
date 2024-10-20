@@ -3,35 +3,41 @@ import styles from "./index.module.scss";
 import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
 import { Post } from "@/types/post";
+import Head from "next/head";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
-    <main className={styles.container}>
-      <div className={styles.banner}>
-        <h1>Hi there! welcome to my personal web</h1>
-        <p>This is a place to share my personal thoughts</p>
-      </div>
-      <div className={styles.postsWrapper}>
-        <h2>Newest Posts</h2>
+    <>
+      <Head>
+        <title>Homepage</title>
+      </Head>
+      <main className={styles.container}>
+        <div className={styles.banner}>
+          <h1>Hi there! welcome to my personal web</h1>
+          <p>This is a place to share my personal thoughts</p>
+        </div>
+        <div className={styles.postsWrapper}>
+          <h2>Newest Posts</h2>
 
-        {posts.length > 0 ? (
-          posts.map((post: Post) => (
-            <div key={post.slug} className={styles.postCardWrapper}>
-              <PostCard
-                slug={post.slug}
-                url={`/posts/${post.slug}`}
-                title={post.title}
-                summary={post.summary}
-                thumbnail={post.thumbnail}
-                content={post.content}
-              />
-            </div>
-          ))
-        ) : (
-          <p>No posts available at the moment.</p>
-        )}
-      </div>
-    </main>
+          {posts.length > 0 ? (
+            posts.map((post: Post) => (
+              <div key={post.slug} className={styles.postCardWrapper}>
+                <PostCard
+                  slug={post.slug}
+                  url={`/posts/${post.slug}`}
+                  title={post.title}
+                  summary={post.summary}
+                  thumbnail={post.thumbnail}
+                  content={post.content}
+                />
+              </div>
+            ))
+          ) : (
+            <p>No posts available at the moment.</p>
+          )}
+        </div>
+      </main>
+    </>
   );
 }
 
