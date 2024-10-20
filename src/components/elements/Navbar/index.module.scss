@@ -7,19 +7,33 @@
   color: white;
   display: flex;
   align-items: center;
-  padding: 0 60px;
+  padding: 0 15px;
   z-index: 2;
   justify-content: space-between;
 
+  .hamburger {
+    display: block;
+
+    .listMenuMobile {
+      display: none;
+    }
+
+    .listMenuMobileActive {
+      display: block;
+    }
+  }
+
   ul {
     list-style-type: none;
-    display: flex;
+    display: none;
     width: 30%;
-    justify-content: space-around;
     li {
       padding: 0 8px;
       cursor: pointer;
 
+      a.active {
+        text-decoration: underline;
+      }
       a {
         color: unset;
         text-decoration: none;
@@ -27,6 +41,23 @@
           color: lightblue;
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    padding: 0 15px;
+    .hamburger {
+      display: none;
+    }
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: 50px;
     }
   }
 }

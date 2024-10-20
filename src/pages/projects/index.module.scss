@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 30vh;
+  height: 35vh;
   background-color: #0265a1;
   overflow: hidden;
   margin: 60px 0 0;
@@ -24,7 +24,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 10px;
   height: 100%;
   width: 100%;
 
@@ -57,7 +57,7 @@
   }
 
   .projectCardWrapper {
-    width: 33.333%;
+    width: 100%;
     display: inline-block;
     padding: 8px;
     vertical-align: top;
@@ -66,4 +66,26 @@
 
 .contentWrapper > p {
   text-align: justify;
+}
+
+@media screen and (min-width: 768px) {
+  .banner {
+    height: 30vh;
+  }
+  .bannerOverlay {
+    padding: 20px;
+  }
+  .contentWrapper {
+    .projectCardWrapper {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contentWrapper {
+    .projectCardWrapper {
+      width: 33.333%;
+    }
+  }
 }
