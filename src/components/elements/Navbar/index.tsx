@@ -31,7 +31,9 @@ const Navbar = () => {
 
   return (
     <nav className={styles.nav}>
-      <h1>Roozyroo</h1>
+      <h1>
+        <Link href="/">Roozyroo</Link>
+      </h1>
       <div className={styles.hamburger} onClick={handleClickMenu}>
         {activeMenu ? <CloseIcon /> : <MenuIcon />}
       </div>
