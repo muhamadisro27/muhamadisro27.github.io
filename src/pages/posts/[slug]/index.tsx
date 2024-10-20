@@ -4,6 +4,7 @@ import { fetchAll, fetchBySlug } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
 import { GetStaticProps } from "next";
 import useImage from "@/hooks/useImage";
+import Head from "next/head";
 
 const DetailPostPage = ({ post }: { post: Post }) => {
   const image = useImage(post.thumbnail);
@@ -13,6 +14,10 @@ const DetailPostPage = ({ post }: { post: Post }) => {
   }
 
   return (
+    <>
+    <Head>
+      <title>Post Page - {post.title}</title>
+    </Head>
     <main className={styles.container}>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
@@ -32,6 +37,7 @@ const DetailPostPage = ({ post }: { post: Post }) => {
         {<div dangerouslySetInnerHTML={{ __html: post.content }} />}
       </div>
     </main>
+    </>
   );
 };
 

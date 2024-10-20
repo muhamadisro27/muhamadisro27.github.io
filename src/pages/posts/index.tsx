@@ -6,6 +6,7 @@ import { fetchAll } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
 import Search from "@/components/elements/Search";
 import { ChangeEvent, useMemo, useState } from "react";
+import Head from "next/head";
 
 const PostPage = ({ posts }: { posts: Post[] }) => {
   const [search, setSearch] = useState("");
@@ -28,33 +29,38 @@ const PostPage = ({ posts }: { posts: Post[] }) => {
   }, [posts, search]);
 
   return (
-    <main className={styles.container}>
-      <div className={styles.banner}>
-        <h1>All Blog Posts</h1>
-        <p>A list of all my past blog posts</p>
-      </div>
+    <>
+      <Head>
+        <title>Post Page</title>
+      </Head>
+      <main className={styles.container}>
+        <div className={styles.banner}>
+          <h1>All Blog Posts</h1>
+          <p>A list of all my past blog posts</p>
+        </div>
 
-      <Search onChange={handleChangeSearch} search={search} />
+        <Search onChange={handleChangeSearch} search={search} />
 
-      <div>
-        {filteredData.length > 0 ? (
-          filteredData.map((post: Post) => (
-            <div key={post.slug} className={styles.postCardWrapper}>
-              <PostCard
-                slug={post.slug}
-                url={`/posts/${post.slug}`}
-                title={post.title}
-                summary={post.summary}
-                thumbnail={post.thumbnail}
-                content={post.content}
-              />
-            </div>
-          ))
-        ) : (
-          <NotFoundError keyword={search} />
-        )}
-      </div>
-    </main>
+        <div>
+          {filteredData.length > 0 ? (
+            filteredData.map((post: Post) => (
+              <div key={post.slug} className={styles.postCardWrapper}>
+                <PostCard
+                  slug={post.slug}
+                  url={`/posts/${post.slug}`}
+                  title={post.title}
+                  summary={post.summary}
+                  thumbnail={post.thumbnail}
+                  content={post.content}
+                />
+              </div>
+            ))
+          ) : (
+            <NotFoundError keyword={search} />
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 
