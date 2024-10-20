@@ -21,6 +21,18 @@
 .postCardWrapper {
   display: inline-block;
   padding: 8px;
-  width: 25%;
+  width: 100%;
   min-width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .postCardWrapper {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .postCardWrapper {
+    width: 25%;
+  }
 }
