@@ -7,13 +7,17 @@ import useImage from "@/hooks/useImage";
 const PostCard = (props: PostURL) => {
   const { title, thumbnail, summary, url = "" } = props;
 
+  const image = useImage(thumbnail);
+
   return (
     <section className={styles.container}>
       <Link href={url}>
         <div className={styles.imageWrapper}>
-          <Image src={useImage(thumbnail)} alt="" fill objectFit="cover" quality={80} />
+          <Image src={image} alt="" fill objectFit="cover" quality={80} />
         </div>
-        <h3 className={styles.title} title={title}>{title}</h3>
+        <h3 className={styles.title} title={title}>
+          {title}
+        </h3>
         <p className={styles.summary}>{summary}</p>
       </Link>
     </section>

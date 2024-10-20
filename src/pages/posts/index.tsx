@@ -1,7 +1,10 @@
 import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
+import { GetStaticProps } from "next";
+import { fetchAll } from "@/hooks/useFetch";
+import { Post } from "@/types/post";
 
-const PostPage = () => {
+const PostPage = ({ posts }: { posts: Post[] }) => {
   return (
     <main className={styles.container}>
       <div className={styles.banner}>
@@ -17,17 +20,16 @@ const PostPage = () => {
         />
       </div>
       <div>
-        {Array(12)
-          .fill(null)
-          .map((_, index) => (
-            <div key={index} className={styles.postCardWrapper}>
+        {posts &&
+          posts.map((post: Post) => (
+            <div key={post.slug} className={styles.postCardWrapper}>
               <PostCard
-                slug="my-first-blog-post"
-                content="asdfasdf"
-                url="posts/123"
-                title="My first blog post"
-                summary="checkout my first blog post"
-                thumbnail="default.jpg"
+                slug={post.slug}
+                url={`/posts/${post.slug}`}
+                title={post.title}
+                summary={post.summary}
+                thumbnail={post.thumbnail}
+                content={post.content}
               />
             </div>
           ))}
@@ -37,3 +39,25 @@ const PostPage = () => {
 };
 
 export default PostPage;
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const { data: posts, error } = await fetchAll("posts");
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
+};

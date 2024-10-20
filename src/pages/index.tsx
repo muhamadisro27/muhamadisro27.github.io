@@ -37,7 +37,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data: posts, error } = await fetchAll("posts", 4);
+    const { data: posts, error } = await fetchAll("posts");
     if (error) {
       throw new Error(error.message);
     }
