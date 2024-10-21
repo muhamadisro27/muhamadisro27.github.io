@@ -1,6 +1,6 @@
 .container {
   transition: height ease-out 200ms;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 0;
   width: 100%;
@@ -13,6 +13,7 @@
     flex-direction: column;
     padding: 15px;
     row-gap: 20px;
+    margin-top: 60px;
     a {
       text-decoration: none;
       color: black;
