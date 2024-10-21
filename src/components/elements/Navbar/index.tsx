@@ -27,17 +27,6 @@ const Navbar: React.FC<NavbarProps> = ({ active, onClick }: NavbarProps) => {
       <h1>
         <Link href="/">Roozyroo</Link>
       </h1>
-      {/* <div className={styles.lineWrapper} onClick={handleClickMenu}>
-        {Array(3)
-          .fill(null)
-          .map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.line}`}
-              data-active={`${activeMenu ? true : false}`}
-            ></span>
-          ))}
-      </div> */}
       <Hamburger active={active} onClick={onClick} />
       <ul>
         {menus.map((menu) => (
