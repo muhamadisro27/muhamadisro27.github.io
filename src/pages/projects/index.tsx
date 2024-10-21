@@ -11,44 +11,47 @@ const GithubProjectsPage = (props: RepoProps) => {
 
   return (
     <>
-    <Head>
-      <title>Projects Page</title>
-    </Head>
-    <main className={styles.container}>
-      <div className={styles.banner}>
-        <div className={styles.bannerOverlay}>
-          <h1>My Github Projects</h1>
-          <p>{`Checkout my Github projects that i've worked on !`}</p>
-          <Link
-            href="https://github.com/muhamadisro27"
-            target="_blank"
-            type="button"
-          >
-            Check out my profile
-          </Link>
+      <Head>
+        <title>Projects Page</title>
+      </Head>
+      <main className={styles.container}>
+        <div className={styles.banner}>
+          <div className={styles.bannerOverlay}>
+            <h1>My Github Projects</h1>
+            <p>{`Checkout my Github projects that i've worked on !`}</p>
+            <Link
+              href="https://github.com/muhamadisro27"
+              target="_blank"
+              type="button"
+            >
+              Check out my profile
+            </Link>
+          </div>
+            <Image
+              alt=""
+              src="/github.webp"
+              fill
+              objectFit="cover"
+              objectPosition="center"
+              priority
+            />
         </div>
-        <Image
-          alt=""
-          src="/github.webp"
-          fill
-          objectFit="cover"
-          objectPosition="center"
-        />
-      </div>
-      <div className={styles.contentWrapper}>
-        {repos.length > 0 &&
-          repos.map(({ id, html_url, full_name, updated_at, description }) => (
-            <div key={id} className={styles.projectCardWrapper}>
-              <ProjectCard
-                url={html_url}
-                name={full_name}
-                updatedAt={moment(updated_at).format("DD-MM-YYYY")}
-                summary={description}
-              />
-            </div>
-          ))}
-      </div>
-    </main>
+        <div className={styles.contentWrapper}>
+          {repos.length > 0 &&
+            repos.map(
+              ({ id, html_url, full_name, updated_at, description }) => (
+                <div key={id} className={styles.projectCardWrapper}>
+                  <ProjectCard
+                    url={html_url}
+                    name={full_name}
+                    updatedAt={moment(updated_at).format("DD-MM-YYYY")}
+                    summary={description}
+                  />
+                </div>
+              )
+            )}
+        </div>
+      </main>
     </>
   );
 };

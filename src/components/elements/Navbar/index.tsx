@@ -1,11 +1,10 @@
 import Link from "next/link";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import MenuIcon from "../MenuIcon";
-import CloseIcon from "../CloseIcon";
+import { NavbarProps } from "@/types/navbar";
+import Hamburger from "../Hamburger";
 
-const Navbar = () => {
+const Navbar = ({ active, onClick }: NavbarProps) => {
   const { pathname } = useRouter();
 
   const menus = [
@@ -23,29 +22,23 @@ const Navbar = () => {
     },
   ];
 
-  const [activeMenu, setActiveMenu] = useState(false);
-
-  const handleClickMenu = () => {
-    setActiveMenu(!activeMenu);
-  };
-
   return (
     <nav className={styles.nav}>
       <h1>
         <Link href="/">Roozyroo</Link>
       </h1>
-      <div className={styles.hamburger} onClick={handleClickMenu}>
-        {activeMenu ? <CloseIcon /> : <MenuIcon />}
-      </div>
-      {/* <div
-        className={`${
-          activeMenu ? styles.listMenuMobileActive : styles.listMenuMobile
-        }`}
-      >
-        <ul>
-          <li>asd</li>
-        </ul>
+      {/* <div className={styles.lineWrapper} onClick={handleClickMenu}>
+        {Array(3)
+          .fill(null)
+          .map((_, index) => (
+            <span
+              key={index}
+              className={`${styles.line}`}
+              data-active={`${activeMenu ? true : false}`}
+            ></span>
+          ))}
       </div> */}
+      <Hamburger active={active} onClick={onClick} />
       <ul>
         {menus.map((menu) => (
           <li key={menu.url}>

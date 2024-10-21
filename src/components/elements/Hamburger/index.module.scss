@@ -1,0 +1,36 @@
+.lineWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 22px;
+  height: 20px;
+  cursor: pointer;
+  justify-content: space-between;
+  .line {
+    width: 100%;
+    border-radius: 4px;
+    height: 3px;
+    background-color: white;
+    transition: all 200ms;
+  }
+
+  .line[data-active="true"]:nth-child(1),
+  .line[data-active="true"]:nth-child(3) {
+    transform-origin: -1px center;
+  }
+
+  .line[data-active="true"]:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .line[data-active="true"]:nth-child(2) {
+    width: 0px;
+  }
+  .line[data-active="true"]:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .lineWrapper {
+    display: none;
+  }
+}
