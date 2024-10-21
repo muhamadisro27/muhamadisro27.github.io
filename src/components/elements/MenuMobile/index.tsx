@@ -65,7 +65,11 @@ const MenuMobile: React.FC<setStateFC> = ({ setActive }: setStateFC) => {
     <div className={styles.container} ref={containerWrap}>
       <div className={styles.menuWrapper} ref={menuWrap}>
         {menus.map((menu) => (
-          <Link href={menu.url} onClick={(e) => handleClick(e, menu.url)}>
+          <Link
+            key={menu.url}
+            href={menu.url}
+            onClick={(e) => handleClick(e, menu.url)}
+          >
             {menu.name}
           </Link>
         ))}
