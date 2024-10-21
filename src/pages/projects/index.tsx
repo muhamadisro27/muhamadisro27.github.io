@@ -6,7 +6,7 @@ import { RepoProps } from "@/types/repo";
 import moment from "moment";
 import Title from "@/components/elements/Title";
 
-const GithubProjectsPage = (props: RepoProps) => {
+const GithubProjectsPage: React.FC<RepoProps> = (props: RepoProps) => {
   const { repos } = props;
 
   return (

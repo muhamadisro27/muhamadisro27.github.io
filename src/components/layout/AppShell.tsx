@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import Navbar from "../elements/Navbar";
+import MenuMobile from "../elements/MenuMobile";
 
 interface AppShellInterface {
   children: React.ReactNode;
 }
 
-const AppShell = ({ children }: AppShellInterface) => {
+const AppShell: React.FC<AppShellInterface> = ({
+  children,
+}: AppShellInterface) => {
   const [activeMenu, setActiveMenu] = useState(false);
 
   useEffect(() => {
@@ -40,11 +43,13 @@ const AppShell = ({ children }: AppShellInterface) => {
   };
 
   return (
-    <>
+    <div style={{ 
+      position: "relative"
+     }}>
       <Navbar active={activeMenu} onClick={handleClickMenu} />
-      {/* <MenuMobile /> */}
+      {activeMenu && <MenuMobile setActive={setActiveMenu} />}
       {children}
-    </>
+    </div>
   );
 };
 

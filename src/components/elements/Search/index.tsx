@@ -1,12 +1,7 @@
-import { ChangeEvent } from "react";
 import styles from "./index.module.scss";
+import { SearchProp } from "@/types/search";
 
-interface SearchProp {
-  search: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}
-
-const Search = (props: SearchProp) => {
+const Search: React.FC<SearchProp> = (props: SearchProp) => {
   const { search, onChange } = props;
   return (
     <div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PostURL } from "@/types/post";
 import useImage from "@/hooks/useImage";
 
-const PostCard = (props: PostURL) => {
+const PostCard: React.FC<PostURL> = (props: PostURL) => {
   const { title, thumbnail, summary, url = "" } = props;
 
   const image = useImage(thumbnail);

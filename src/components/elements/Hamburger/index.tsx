@@ -1,7 +1,7 @@
 import { NavbarProps } from "@/types/navbar";
 import styles from "./index.module.scss";
 
-const Hamburger = ({ active, onClick }: NavbarProps) => {
+const Hamburger: React.FC<NavbarProps> = ({ active, onClick }: NavbarProps) => {
   return (
     <div className={styles.lineWrapper} onClick={onClick}>
       {Array(3)

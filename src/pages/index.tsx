@@ -2,10 +2,10 @@ import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
 import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
-import { Post } from "@/types/post";
+import { Post, Posts } from "@/types/post";
 import Title from "@/components/elements/Title";
 
-export default function Home({ posts }: { posts: Post[] }) {
+const Home: React.FC<Posts> = ({ posts }: Posts) => {
   return (
     <>
       <Title suffix="Personal Website" />
@@ -37,7 +37,9 @@ export default function Home({ posts }: { posts: Post[] }) {
       </main>
     </>
   );
-}
+};
+
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
