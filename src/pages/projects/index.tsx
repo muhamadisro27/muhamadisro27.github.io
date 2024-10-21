@@ -33,6 +33,7 @@ const GithubProjectsPage = (props: RepoProps) => {
           fill
           objectFit="cover"
           objectPosition="center"
+          priority
         />
       </div>
       <div className={styles.contentWrapper}>
