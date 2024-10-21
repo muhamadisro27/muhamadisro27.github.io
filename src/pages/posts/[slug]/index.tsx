@@ -4,7 +4,6 @@ import { fetchAll, fetchBySlug } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
 import { GetStaticProps } from "next";
 import useImage from "@/hooks/useImage";
-import Head from "next/head";
 import Title from "@/components/elements/Title";
 
 const DetailPostPage = ({ post }: { post: Post }) => {

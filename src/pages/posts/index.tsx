@@ -6,7 +6,6 @@ import { fetchAll } from "@/hooks/useFetch";
 import { Post } from "@/types/post";
 import Search from "@/components/elements/Search";
 import { ChangeEvent, useMemo, useState } from "react";
-import Head from "next/head";
 import Title from "@/components/elements/Title";
 
 const PostPage = ({ posts }: { posts: Post[] }) => {

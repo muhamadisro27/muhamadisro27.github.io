@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import { RepoProps } from "@/types/repo";
 import moment from "moment";
-import Head from "next/head";
 import Title from "@/components/elements/Title";
 
 const GithubProjectsPage = (props: RepoProps) => {
