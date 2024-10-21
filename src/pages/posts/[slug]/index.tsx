@@ -6,7 +6,7 @@ import { GetStaticProps } from "next";
 import useImage from "@/hooks/useImage";
 import Title from "@/components/elements/Title";
 
-const DetailPostPage = ({ post }: { post: Post }) => {
+const DetailPostPage: React.FC<{ post: Post }> = ({ post }: { post: Post }) => {
   const image = useImage(post.thumbnail);
 
   if (!post) {

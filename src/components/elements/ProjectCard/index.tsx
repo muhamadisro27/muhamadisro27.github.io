@@ -2,7 +2,7 @@ import { Repo } from "@/types/repo";
 import styles from "./index.module.scss";
 import Link from "next/link";
 
-const ProjectCard = (props: Repo) => {
+const ProjectCard: React.FC<Repo> = (props: Repo) => {
   const { name, updatedAt, summary, url } = props;
 
   return (

@@ -5,7 +5,9 @@ interface AppShellInterface {
   children: React.ReactNode;
 }
 
-const AppShell = ({ children }: AppShellInterface) => {
+const AppShell: React.FC<AppShellInterface> = ({
+  children,
+}: AppShellInterface) => {
   const [activeMenu, setActiveMenu] = useState(false);
 
   useEffect(() => {

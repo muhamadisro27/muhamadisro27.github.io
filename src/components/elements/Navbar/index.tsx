@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { NavbarProps } from "@/types/navbar";
 import Hamburger from "../Hamburger";
 
-const Navbar = ({ active, onClick }: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = ({ active, onClick }: NavbarProps) => {
   const { pathname } = useRouter();
 
   const menus = [

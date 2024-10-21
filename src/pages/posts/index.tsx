@@ -3,12 +3,12 @@ import NotFoundError from "@/components/elements/NotFound";
 import styles from "./index.module.scss";
 import { GetStaticProps } from "next";
 import { fetchAll } from "@/hooks/useFetch";
-import { Post } from "@/types/post";
+import { Post, Posts } from "@/types/post";
 import Search from "@/components/elements/Search";
 import { ChangeEvent, useMemo, useState } from "react";
 import Title from "@/components/elements/Title";
 
-const PostPage = ({ posts }: { posts: Post[] }) => {
+const PostPage: React.FC<Posts> = ({ posts }: Posts) => {
   const [search, setSearch] = useState("");
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>): void => {

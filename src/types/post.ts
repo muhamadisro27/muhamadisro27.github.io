@@ -6,6 +6,10 @@ export interface Post {
   content: string;
 }
 
+export interface Posts {
+  posts : Post[]
+}
+
 export interface PostURL extends Post {
   url: string;
 }
