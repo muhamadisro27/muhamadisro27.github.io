@@ -47,7 +47,7 @@ const AppShell: React.FC<AppShellInterface> = ({
       position: "relative"
      }}>
       <Navbar active={activeMenu} onClick={handleClickMenu} />
-      {activeMenu && <MenuMobile />}
+      {activeMenu && <MenuMobile setActive={setActiveMenu} />}
       {children}
     </div>
   );
