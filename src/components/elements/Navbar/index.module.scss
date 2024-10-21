@@ -1,3 +1,7 @@
+body > .line[data-active="true"] {
+  overflow: hidden;
+}
+
 .nav {
   height: 60px;
   width: 100%;
@@ -15,18 +19,6 @@
     a {
       text-decoration: none;
       color: unset;
-    }
-  }
-
-  .hamburger {
-    display: block;
-
-    .listMenuMobile {
-      display: none;
-    }
-
-    .listMenuMobileActive {
-      display: block;
     }
   }
 
@@ -58,7 +50,7 @@
 @media screen and (min-width: 1024px) {
   .nav {
     padding: 0 15px;
-    .hamburger {
+    .lineWrapper {
       display: none;
     }
     ul {
