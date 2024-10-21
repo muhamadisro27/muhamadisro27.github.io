@@ -3,14 +3,12 @@ import styles from "./index.module.scss";
 import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
 import { Post } from "@/types/post";
-import Head from "next/head";
+import Title from "@/components/elements/Title";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
     <>
-      <Head>
-        <title>Homepage</title>
-      </Head>
+      <Title suffix="Personal Website" />
       <main className={styles.container}>
         <div className={styles.banner}>
           <h1>Hi there! welcome to my personal web</h1>

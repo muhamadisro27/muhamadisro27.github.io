@@ -5,6 +5,7 @@ import { Post } from "@/types/post";
 import { GetStaticProps } from "next";
 import useImage from "@/hooks/useImage";
 import Head from "next/head";
+import Title from "@/components/elements/Title";
 
 const DetailPostPage = ({ post }: { post: Post }) => {
   const image = useImage(post.thumbnail);
@@ -15,27 +16,25 @@ const DetailPostPage = ({ post }: { post: Post }) => {
 
   return (
     <>
-    <Head>
-      <title>Post Page - {post.title}</title>
-    </Head>
-    <main className={styles.container}>
-      <div className={styles.banner}>
-        <div className={styles.bannerOverlay}>
-          <h1>{post.title}</h1>
+      <Title suffix={post.title} />
+      <main className={styles.container}>
+        <div className={styles.banner}>
+          <div className={styles.bannerOverlay}>
+            <h1>{post.title}</h1>
+          </div>
+          {post.thumbnail && (
+            <Image
+              alt={`Thumbnail of ${post.title}`}
+              src={image}
+              fill
+              objectFit="cover"
+            />
+          )}
         </div>
-        {post.thumbnail && (
-          <Image
-            alt={`Thumbnail of ${post.title}`}
-            src={image}
-            fill
-            objectFit="cover"
-          />
-        )}
-      </div>
-      <div className={styles.contentWrapper}>
-        {<div dangerouslySetInnerHTML={{ __html: post.content }} />}
-      </div>
-    </main>
+        <div className={styles.contentWrapper}>
+          {<div dangerouslySetInnerHTML={{ __html: post.content }} />}
+        </div>
+      </main>
     </>
   );
 };

@@ -5,15 +5,14 @@ import styles from "./index.module.scss";
 import { RepoProps } from "@/types/repo";
 import moment from "moment";
 import Head from "next/head";
+import Title from "@/components/elements/Title";
 
 const GithubProjectsPage = (props: RepoProps) => {
   const { repos } = props;
 
   return (
     <>
-      <Head>
-        <title>Projects Page</title>
-      </Head>
+      <Title suffix="Projects" />
       <main className={styles.container}>
         <div className={styles.banner}>
           <div className={styles.bannerOverlay}>
@@ -27,14 +26,14 @@ const GithubProjectsPage = (props: RepoProps) => {
               Check out my profile
             </Link>
           </div>
-            <Image
-              alt=""
-              src="/github.webp"
-              fill
-              objectFit="cover"
-              objectPosition="center"
-              priority
-            />
+          <Image
+            alt=""
+            src="/github.webp"
+            fill
+            objectFit="cover"
+            objectPosition="center"
+            priority
+          />
         </div>
         <div className={styles.contentWrapper}>
           {repos.length > 0 &&
