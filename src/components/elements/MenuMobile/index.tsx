@@ -21,7 +21,7 @@ const MenuMobile: React.FC<setStateFC> = ({ setActive }: setStateFC) => {
       menu.style.opacity = "0";
 
       setTimeout(() => {
-        container.style.height = "100vh";
+        container.style.height = "100%";
       }, 100);
       setTimeout(() => {
         menu.style.opacity = "1";
@@ -47,7 +47,7 @@ const MenuMobile: React.FC<setStateFC> = ({ setActive }: setStateFC) => {
     },
     {
       url: "/posts",
-      name: "Post",
+      name: "Posts",
     },
   ];
 
