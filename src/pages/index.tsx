@@ -33,7 +33,7 @@ export default function Home({ posts }: { posts: Post[] }) {
               </div>
             ))
           ) : (
-            <p>No posts available at the moment.</p>
+            <p className={styles.notFound}>No posts available at the moment.</p>
           )}
         </div>
       </main>
@@ -44,6 +44,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data: posts, error } = await fetchAll("posts");
+
     if (error) {
       throw new Error(error.message);
     }
