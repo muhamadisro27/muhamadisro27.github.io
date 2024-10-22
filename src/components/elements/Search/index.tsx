@@ -9,6 +9,8 @@ const Search: React.FC<SearchProp> = (props: SearchProp) => {
         className={styles.search}
         type="text"
         placeholder="Search posts by title"
+        name="search"
+        id="search"
         value={search}
         onChange={onChange}
       />
