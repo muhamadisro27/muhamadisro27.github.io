@@ -3,10 +3,11 @@ import NotFoundError from "@/components/elements/NotFound";
 import styles from "./index.module.scss";
 import { GetStaticProps } from "next";
 import { fetchAll } from "@/hooks/useFetch";
-import { Post, Posts } from "@/types/post";
+import { Posts } from "@/types/post";
 import Search from "@/components/elements/Search";
-import { ChangeEvent, useMemo, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import Title from "@/components/elements/Title";
+import EachUtils from "@/utils/eachUtils";
 
 const PostPage: React.FC<Posts> = ({ posts }: Posts) => {
   const [search, setSearch] = useState("");
@@ -39,9 +40,10 @@ const PostPage: React.FC<Posts> = ({ posts }: Posts) => {
 
         <Search onChange={handleChangeSearch} search={search} />
 
-        <div>
-          {filteredData.length > 0 ? (
-            filteredData.map((post: Post) => (
+        {filteredData.length > 0 ? (
+          <EachUtils
+            of={filteredData}
+            render={(post) => (
               <div key={post.slug} className={styles.postCardWrapper}>
                 <PostCard
                   slug={post.slug}
@@ -52,11 +54,11 @@ const PostPage: React.FC<Posts> = ({ posts }: Posts) => {
                   content={post.content}
                 />
               </div>
-            ))
-          ) : (
-            <NotFoundError keyword={search} />
-          )}
-        </div>
+            )}
+          />
+        ) : (
+          <NotFoundError keyword={search} />
+        )}
       </main>
     </>
   );

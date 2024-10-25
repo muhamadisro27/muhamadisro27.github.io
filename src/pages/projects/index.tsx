@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import { RepoProps } from "@/types/repo";
 import moment from "moment";
 import Title from "@/components/elements/Title";
+import EachUtils from "@/utils/eachUtils";
 
 const GithubProjectsPage: React.FC<RepoProps> = (props: RepoProps) => {
   const { repos } = props;
@@ -35,9 +36,16 @@ const GithubProjectsPage: React.FC<RepoProps> = (props: RepoProps) => {
           />
         </div>
         <div className={styles.contentWrapper}>
-          {repos.length > 0 &&
-            repos.map(
-              ({ id, html_url, full_name, updated_at, description }) => (
+          {repos.length > 0 && (
+            <EachUtils
+              of={repos}
+              render={({
+                id,
+                html_url,
+                full_name,
+                updated_at,
+                description,
+              }) => (
                 <div key={id} className={styles.projectCardWrapper}>
                   <ProjectCard
                     url={html_url}
@@ -46,8 +54,9 @@ const GithubProjectsPage: React.FC<RepoProps> = (props: RepoProps) => {
                     summary={description}
                   />
                 </div>
-              )
-            )}
+              )}
+            />
+          )}
         </div>
       </main>
     </>

@@ -10,7 +10,7 @@ const PostCard: React.FC<PostURL> = (props: PostURL) => {
   const image = useImage(thumbnail);
 
   return (
-    <section className={styles.container}>
+    <div className={styles.container}>
       <Link href={url}>
         <div className={styles.imageWrapper}>
           <Image src={image} alt="" fill objectFit="cover" quality={80} />
@@ -20,7 +20,7 @@ const PostCard: React.FC<PostURL> = (props: PostURL) => {
         </h3>
         <p className={styles.summary}>{summary}</p>
       </Link>
-    </section>
+    </div>
   );
 };
 
