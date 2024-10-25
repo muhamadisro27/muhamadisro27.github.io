@@ -2,7 +2,7 @@ import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
 import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
-import { Post, Posts } from "@/types/post";
+import { Posts } from "@/types/post";
 import Title from "@/components/elements/Title";
 import EachUtils from "@/utils/eachUtils";
 
