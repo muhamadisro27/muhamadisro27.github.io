@@ -2,8 +2,9 @@ import PostCard from "@/components/elements/PostCard";
 import styles from "./index.module.scss";
 import { fetchAll } from "@/hooks/useFetch";
 import { GetStaticProps } from "next";
-import { Post, Posts } from "@/types/post";
+import { Posts } from "@/types/post";
 import Title from "@/components/elements/Title";
+import EachUtils from "@/utils/eachUtils";
 
 const Home: React.FC<Posts> = ({ posts }: Posts) => {
   return (
@@ -18,18 +19,21 @@ const Home: React.FC<Posts> = ({ posts }: Posts) => {
           <h2>Newest Posts</h2>
 
           {posts.length > 0 ? (
-            posts.map((post: Post) => (
-              <div key={post.slug} className={styles.postCardWrapper}>
-                <PostCard
-                  slug={post.slug}
-                  url={`/posts/${post.slug}`}
-                  title={post.title}
-                  summary={post.summary}
-                  thumbnail={post.thumbnail}
-                  content={post.content}
-                />
-              </div>
-            ))
+            <EachUtils
+              of={posts}
+              render={(post) => (
+                <div key={post.slug} className={styles.postCardWrapper}>
+                  <PostCard
+                    slug={post.slug}
+                    url={`/posts/${post.slug}`}
+                    title={post.title}
+                    summary={post.summary}
+                    thumbnail={post.thumbnail}
+                    content={post.content}
+                  />
+                </div>
+              )}
+            />
           ) : (
             <p className={styles.notFound}>No posts available at the moment.</p>
           )}

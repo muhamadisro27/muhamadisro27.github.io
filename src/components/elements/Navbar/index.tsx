@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, onClick }: NavbarProps) => {
     },
     {
       url: "/posts",
-      name: "Post",
+      name: "Posts",
     },
   ];
 
